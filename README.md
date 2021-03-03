@@ -1,6 +1,7 @@
 # :microscope: ImageJ/Fiji Macros
 
-Collection of macros for image processing in ImageJ/Fiji
+My personal collection of macros for image processing in
+[ImageJ](https://imagej.github.io/)/[Fiji](https://fiji.sc/).
 
 - [SyncAndCombineStacks.ijm](SyncAndCombineStacks.ijm): Synchronize and combine
-  two image stacks. Useful for pairing different timelapse movies.
+  two image stacks. Useful for pairing time-lapse movies.
