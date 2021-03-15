@@ -5,3 +5,5 @@ My personal collection of macros for image processing in
 
 - [SyncAndCombineStacks.ijm](SyncAndCombineStacks.ijm): Synchronize and combine
   two image stacks. Useful for pairing time-lapse movies.
+- [EnhanceContrastForAllChannels.ijm](EnhanceContrastForAllChannels.ijm):
+  Quickly enhance the contrast of every channel in a stack. 
