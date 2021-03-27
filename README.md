@@ -9,6 +9,10 @@ My personal collection of macros for image processing in
   Quickly enhance the contrast of every channel in a stack. 
 - [SplitTimepoints.ijm](SplitTimepoints.ijm): Save individual timepoints of a
   large timelapse dataset to directory.
-- [QuickMembraneSegmentation.ijm](QuickMembraneSegmentation.ijm): Simple
-  workflow to segment and label cells using
+- [QuickMembraneSegmentation.ijm](QuickMembraneSegmentation.ijm): Segment and
+  label cells in a single image using
   [MorphoLibJ](https://github.com/ijpb/MorphoLibJ).
+- [MembraneWatershed.ijm](MembraneWatershed.ijm): Segment cells in image stack
+  and generate watershed lines for downstream analyses.
+- [MembraneAnalyze.ijm](MembraneAnalyze.ijm): Analyze cell morphometry in image
+  stack and color-code labels based on measurements.
