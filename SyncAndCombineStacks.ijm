@@ -39,6 +39,7 @@ print("  Frame: "+ bottom_frame);
 print("Combine: "+ orientation);
 
 // Compute first and last frames for each stack
+// TODO: If one of the stacks has less frames than "last" value, black frames will be added. Ideally, the combined stack should be limited to frames with data. Get values and reduce combined stack as needed.
 if (top_frame > bottom_frame) {
 	diff = top_frame - bottom_frame;
 	top_first = diff + 1;
@@ -52,6 +53,7 @@ if (top_frame > bottom_frame) {
 	top_first = 1;
 	top_last = bottom_last - diff;
 } else {
+	// TODO: In fact, this is not a problem. Should simply combine the stacks without the trouble of calculating.
 	print("PROBLEM! Top: "+ top_frame +" = Bottom: " +bottom_frame);
 }
 

@@ -48,7 +48,7 @@ for (i=1; i<=frames; i++) {
 	morphometry = "labelmap-Morphometry";
 
 	// Assign area to label map
-	run("Assign Measure to Label", "results="+ morphometry +" column=Area min=10 max=3000");
+	run("Assign Measure to Label", "results="+ morphometry +" column=Area min=10 max=2000");
 	rename("area");
 
 	// Copy area image and paste to area stack
