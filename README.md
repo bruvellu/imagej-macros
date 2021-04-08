@@ -20,3 +20,5 @@ My personal collection of macros for image processing in
   achieve perfect roundness when mirroring a fly embryo stack.
 - [MirrorFlyEmbryosBatch.ijm](MirrorFlyEmbryosBatch.ijm): Mirror fly embryo
   stacks in batch.
+- [IterativePIV.ijm](IterativePIV.ijm): Analyze particle image velocimetry in
+  image stacks.
