@@ -17,8 +17,9 @@ stacks = getFileList(indir);
 timepoints = lengthOf(stacks);
 //timepoints = 1;
 
-// Slices to be removed for perfect roundness
-rfactor = 5;
+// Add or remove inner slices for perfect roundness
+// Change as needed (positive adds, negative removes)
+sfactor = 4;
 
 // Batch mode on
 setBatchMode(true);
@@ -43,10 +44,20 @@ for (i=0; i<timepoints; i++) {
 	// Get image dimensions
 	Stack.getDimensions(width, height, channels, slices, frames);
 
-	// Remove slices if needed
-	if (rfactor > 0) {
-		run("Slice Remover", "first=1 last="+ rfactor +" increment=1");
-	}
+	// Add or remove slices, if needed
+	if (sfactor < 0) {
+		// Removes n deepest slices
+		run("Slice Remover", "first=1 last="+ sfactor +" increment=1");
+		}
+	else if (sfactor > 0) {
+		// Adds n copies of the deepest slice
+		for (n=1; n<sfactor+1; n++) {
+			setSlice(1);
+			run("Copy");
+			run("Add Slice");
+			run("Paste");
+			}
+		}
 	
 	// Rename reverse
 	run("Duplicate...", "title=reverse duplicate");

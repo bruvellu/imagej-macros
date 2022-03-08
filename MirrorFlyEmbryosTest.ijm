@@ -6,8 +6,9 @@
 // downstream processing. Perfect roundness matter, therefore an rfactor
 // parameter removes slices to adjust the final stack.
 
-// Slices to be removed for perfect roundness, change as needed
-rfactor = 5;
+// Add or remove inner slices for perfect roundness
+// Change as needed (positive adds, negative removes)
+sfactor = 4;
 
 // Duplicate first
 run("Duplicate...", "duplicate");
@@ -22,9 +23,18 @@ rename("forward");
 Stack.getDimensions(width, height, channels, slices, frames);
 name = getTitle();
 
-// Remove slices if needed
-if (rfactor > 0) {
-	run("Slice Remover", "first=1 last="+ rfactor +" increment=1");
+// Add or remove slices, if needed
+if (sfactor < 0) {
+	// Removes n deepest slices
+	run("Slice Remover", "first=1 last="+ sfactor +" increment=1");
+} else if (sfactor > 0) {
+	// Adds n copies of the deepest slice
+	for (n=1; n<sfactor+1; n++) {
+		setSlice(1);
+		run("Copy");
+		run("Add Slice");
+		run("Paste");
+		}
 }
 	
 // Rename reverse
