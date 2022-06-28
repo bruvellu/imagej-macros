@@ -19,7 +19,7 @@ timepoints = lengthOf(stacks);
 
 // Add or remove inner slices for perfect roundness
 // Change as needed (positive adds, negative removes)
-sfactor = 4;
+sfactor = 0;
 
 // Batch mode on
 setBatchMode(true);
@@ -47,7 +47,7 @@ for (i=0; i<timepoints; i++) {
 	// Add or remove slices, if needed
 	if (sfactor < 0) {
 		// Removes n deepest slices
-		run("Slice Remover", "first=1 last="+ sfactor +" increment=1");
+		run("Slice Remover", "first=1 last="+ -sfactor +" increment=1");
 		}
 	else if (sfactor > 0) {
 		// Adds n copies of the deepest slice

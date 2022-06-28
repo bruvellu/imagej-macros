@@ -8,7 +8,7 @@
 
 // Add or remove inner slices for perfect roundness
 // Change as needed (positive adds, negative removes)
-sfactor = 4;
+sfactor = 0;
 
 // Duplicate first
 run("Duplicate...", "duplicate");
@@ -26,7 +26,7 @@ name = getTitle();
 // Add or remove slices, if needed
 if (sfactor < 0) {
 	// Removes n deepest slices
-	run("Slice Remover", "first=1 last="+ sfactor +" increment=1");
+	run("Slice Remover", "first=1 last="+ -sfactor +" increment=1");
 } else if (sfactor > 0) {
 	// Adds n copies of the deepest slice
 	for (n=1; n<sfactor+1; n++) {
