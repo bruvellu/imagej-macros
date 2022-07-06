@@ -37,7 +37,7 @@ for (i=1; i<=frames; i++) {
 	rename("labelmap");
 
 	// Calculate area and other measurements of segmented cells
-	run("Analyze Regions", "area perimeter circularity centroid convexity max._feret geodesic tortuosity average_thickness");
+	run("Analyze Regions", "pixel_count area perimeter circularity bounding_box centroid equivalent_ellipse ellipse_elong. convexity max._feret oriented_box oriented_box_elong. geodesic tortuosity max._inscribed_disc average_thickness geodesic_elong.");
 	
 	// Name automatically given to measurements window
 	morphometry = tablename + "-frame" + i + ".txt";
