@@ -7,15 +7,17 @@ My collection of macros for image processing in
   two image stacks. Useful for pairing time-lapse movies.
 - [EnhanceContrastForAllChannels.ijm](EnhanceContrastForAllChannels.ijm):
   Quickly enhance the contrast of every channel in a stack. 
-- [SplitTimepoints.ijm](SplitTimepoints.ijm): Save individual timepoints of a
-  large timelapse dataset to directory.
+- [SplitTimepoints.ijm](SplitTimepoints.ijm): Save individual timepoints of
+  a large timelapse dataset to directory.
 - [QuickMembraneSegmentation.ijm](QuickMembraneSegmentation.ijm): Segment and
   label cells in a single image using
   [MorphoLibJ](https://github.com/ijpb/MorphoLibJ).
-- [MembraneWatershed.ijm](MembraneWatershed.ijm): Segment cells in image stack
-  and generate watershed lines for downstream analyses.
+- [MembraneSegmentation.ijm](MembraneSegmentation.ijm): Segment cells in image
+  stack and generate watershed lines for downstream analyses.
 - [MembraneAnalyze.ijm](MembraneAnalyze.ijm): Analyze cell morphometry in image
-  stack and color-code labels based on measurements.
+  stack and generate label maps.
+- [MembraneVisualize.ijm](MembraneVisualize.ijm): Visualize cell morphometry
+  variables in image stack by color-coding measurements.
 - [MirrorFlyEmbryosTest.ijm](MirrorFlyEmbryosTest.ijm): Test parameters to
   achieve perfect roundness when mirroring a fly embryo stack.
 - [MirrorFlyEmbryosBatch.ijm](MirrorFlyEmbryosBatch.ijm): Mirror fly embryo
