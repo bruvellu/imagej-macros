@@ -24,7 +24,8 @@ Stack.getDimensions(width, height, channels, slices, frames);
 // TODO: Handle this better
 if (frames == 1 && slices > 1) {
 	run("Properties...", "slices=" + frames + " frames=" + slices);
-	//Stack.setDimensions(channels, slices, frames);
+	frames = slices;
+	slices = 1;
 }
 
 // Create new stack for watershed
