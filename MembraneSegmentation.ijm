@@ -3,7 +3,8 @@
 // Performs membrane segmentation on image stack (frame by frame), and exports
 // the watershed lines as a new image stack.
 
-// Get stack name and basename
+// Get stack path, name and basename
+path = getDirectory("image");
 title = getTitle();
 basename = File.getNameWithoutExtension(title);
 
@@ -43,17 +44,17 @@ for (i=1; i<=frames; i++) {
 
 	// Begin MorphoLibJ default segmentation
 	run("Morphological Segmentation");
-	wait( waitime);
+	wait(waitime);
 	
 	// Run membrane segmentation using default parameters
 	selectWindow("Morphological Segmentation");
 	call("inra.ijpb.plugins.MorphologicalSegmentation.segment", "tolerance=" + tolerance, "calculateDams=true", "connectivity=4");
-	wait( waitime );
+	wait(waitime);
 	
 	// Select catchment basins image type
 	selectWindow("Morphological Segmentation");
 	call("inra.ijpb.plugins.MorphologicalSegmentation.setDisplayFormat", "Watershed lines");
-	wait( waitime );
+	wait(waitime);
 
 	// Generate segmentation results
 	selectWindow("Morphological Segmentation");
@@ -75,9 +76,16 @@ for (i=1; i<=frames; i++) {
 	// Paste watershed
 	run("Paste");
 	
-	// Deselect
+	// Clear selection
 	run("Select None");
 	
 }
+
+// Save watershed to file
+save(path + watername);
+
+// Close files
+close(watername);
+close(title);
 
 // Watershed is ready for editing or for downstream analyses
