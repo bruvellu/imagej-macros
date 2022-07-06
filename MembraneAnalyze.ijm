@@ -1,28 +1,30 @@
 // Analyze membrane segmentation using MorphoLibJ
 
 // Analyze the morphometry of segmented cells on image stack containing
-// watershed lines, and generate a color-coded stack for a specified parameter
-// (e.g. area). Also outputs stack with labeled cells.
+// watershed lines, output stack with labeled cells and data tables.
 
-// Get stack name
-title = getTitle();
-basename = File.getNameWithoutExtension(title);
-areaname = basename + "-area";
-mapname = basename + "-map";
+// Get stack path and name
+path = getDirectory("image");
+stackname = getTitle();
+
+// Set names for later usage
+basename = File.getNameWithoutExtension(stackname);
+mapname = basename + "-labelmap.tif";
+tablename = basename + "-morphometry";
 
 // Get stack dimensions
 Stack.getDimensions(width, height, channels, slices, frames);
 
-// Create new stacks for area and label map
-newImage(areaname, "8-bit color-mode", width, height, channels, slices, frames);
+// Create new stack labelmap
 newImage(mapname, "8-bit color-mode", width, height, channels, slices, frames);
+
 // Set label map for label map stack
 run("Set Label Map", "colormap=[Golden angle] background=Black shuffle");
 
 // Loop over slices
 for (i=1; i<=frames; i++) {
 	// Select window
-	selectWindow(title);
+	selectWindow(stackname);
 	
 	// Set current frame
 	Stack.setFrame(i);
@@ -32,7 +34,6 @@ for (i=1; i<=frames; i++) {
 	rename("frame");
 
 	// Remove labels from borders
-	//run("Remove Border Labels", "left right top bottom");
 	run("Kill Borders");
 	rename("killborders");
 
@@ -42,25 +43,17 @@ for (i=1; i<=frames; i++) {
 
 	// Calculate area and other measurements of segmented cells
 	run("Analyze Regions", "area perimeter circularity centroid convexity max._feret geodesic tortuosity average_thickness");
-//	run("Analyze Regions", "area perimeter circularity euler_number bounding_box centroid equivalent_ellipse ellipse_elong. convexity max._feret oriented_box oriented_box_elong. geodesic tortuosity max._inscribed_disc average_thickness geodesic_elong.");
+	
+	// Name automatically given to measurements window
+	morphometry = tablename + "-frame" + i + ".txt";
+	Table.rename("labelmap-Morphometry", morphometry);
 
-	// Name of measurements window
-	morphometry = "labelmap-Morphometry";
-
-	// Assign area to label map
-	run("Assign Measure to Label", "results="+ morphometry +" column=Area min=10 max=2000");
-	rename("area");
-
-	// Copy area image and paste to area stack
-	run("Copy");
-	// Select area stack and set to current frame
-	selectWindow(areaname);
-	Stack.setFrame(i);
-	// Paste area
-	run("Paste");
-	// Clear selection
-	run("Select None");
-
+	// Add shape index to table
+	Table.applyMacro("Shape=Perimeter/Math.sqrt(Area) Frame=" + i, morphometry);
+	
+	// Save table to file
+	Table.save(path + morphometry);
+	
 	// Copy label image and paste to label stack
 	selectWindow("labelmap");
 	run("Copy");
@@ -73,10 +66,18 @@ for (i=1; i<=frames; i++) {
 	run("Select None");
 
 	// Close temporary windows
-	close("labelmap-Morphometry");
+	close(morphometry);
 	close("labelmap");
-	close("area");
 	close("killborders");
 	close("frame");
 
 }
+
+// Save labelmap to file
+save(path + mapname);
+
+// Close files
+close(mapname);
+close(stackname);
+
+// Labelmap and morphometry are ready for downstream analyses and visualization
