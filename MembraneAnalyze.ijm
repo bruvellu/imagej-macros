@@ -67,6 +67,9 @@ close(stackname);
 // Concatenate images to labelmap stack
 run("Images to Stack", "name=" + mapname + " use");
 
+// Set dimensions
+Stack.setDimensions(channels, slices, frames);
+
 // Save labelmap to file
 save(path + mapname);
 
