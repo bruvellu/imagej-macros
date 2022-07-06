@@ -5,8 +5,8 @@
 
 // Get stack path, name and basename
 path = getDirectory("image");
-title = getTitle();
-basename = File.getNameWithoutExtension(title);
+stackname = getTitle();
+basename = File.getNameWithoutExtension(stackname);
 
 // Set name for output watershed stack
 watername = basename + "-watershed";
@@ -29,13 +29,13 @@ if (frames == 1 && slices > 1) {
 }
 
 // Create new stack for watershed
-newImage(watername, "8-bit color-mode", width, height, channels, slices, frames);
+//newImage(watername, "32-bit color-mode", width, height, channels, slices, frames);
 
 // Loop over slices
 for (i=1; i<=frames; i++) {
 
 	// Select window
-	selectWindow(title);
+	selectWindow(stackname);
 	
 	// Set current frame
 	Stack.setFrame(i);
@@ -60,33 +60,27 @@ for (i=1; i<=frames; i++) {
 	// Generate segmentation results
 	selectWindow("Morphological Segmentation");
 	call("inra.ijpb.plugins.MorphologicalSegmentation.createResultImage");
+	rename("watershed" + i);
 
 	// Generate segmentation results
 	close("Morphological Segmentation");
-
-	// Copy watershed line
-	run("Copy");
-
-	// Close watershed line
-	close();	
-
-	// Select watershed stack and set to current frame
-	selectWindow(watername);
-	Stack.setFrame(i);
-
-	// Paste watershed
-	run("Paste");
-	
-	// Clear selection
-	run("Select None");
-	
+	// Close mysterious hidden stack
+	close(basename + "-1.tif");
 }
+
+// Close main stack
+close(stackname);
+
+// Concatenate images to watershed stack
+run("Images to Stack", "name=" + watername + " use");
+
+// Set dimensions
+Stack.setDimensions(channels, slices, frames);
 
 // Save watershed to file
 save(path + watername);
 
-// Close files
+// Close watershed
 close(watername);
-close(title);
 
 // Watershed is ready for editing or for downstream analyses
