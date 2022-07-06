@@ -9,20 +9,15 @@ stackname = getTitle();
 
 // Set names for later usage
 basename = File.getNameWithoutExtension(stackname);
-mapname = basename + "-labelmap.tif";
-tablename = basename + "-morphometry";
+mapname = replace(basename, "watershed", "labelmap.tif");
+tablename = replace(basename, "watershed", "morphometry");
 
 // Get stack dimensions
 Stack.getDimensions(width, height, channels, slices, frames);
 
-// Create new stack labelmap
-newImage(mapname, "8-bit color-mode", width, height, channels, slices, frames);
-
-// Set label map for label map stack
-run("Set Label Map", "colormap=[Golden angle] background=Black shuffle");
-
 // Loop over slices
 for (i=1; i<=frames; i++) {
+
 	// Select window
 	selectWindow(stackname);
 	
@@ -56,28 +51,26 @@ for (i=1; i<=frames; i++) {
 	
 	// Copy label image and paste to label stack
 	selectWindow("labelmap");
-	run("Copy");
-	// Select label stack and set to current frame
-	selectWindow(mapname);
-	Stack.setFrame(i);
-	// Paste label
-	run("Paste");
-	// Clear selection
-	run("Select None");
+	run("Set Label Map", "colormap=[Golden angle] background=Black");
+	rename("labelmap" + i);
 
 	// Close temporary windows
 	close(morphometry);
-	close("labelmap");
 	close("killborders");
 	close("frame");
 
 }
+
+// Close main stack
+close(stackname);
+
+// Concatenate images to labelmap stack
+run("Images to Stack", "name=" + mapname + " use");
 
 // Save labelmap to file
 save(path + mapname);
 
 // Close files
 close(mapname);
-close(stackname);
 
 // Labelmap and morphometry are ready for downstream analyses and visualization
