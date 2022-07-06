@@ -7,20 +7,23 @@
 title = getTitle();
 basename = File.getNameWithoutExtension(title);
 
+// Waiting time needed for MorphoLibJ macro to work
+waitime = 1000;
+
 // Begin MorphoLibJ default segmentation
 // Note: Waits are needed for the macro to work!
 run("Morphological Segmentation");
-wait( 1000 );
+wait(waitime);
 
 // Run membrane segmentation using default parameters
 selectWindow("Morphological Segmentation");
 call("inra.ijpb.plugins.MorphologicalSegmentation.segment", "tolerance=10.0", "calculateDams=true", "connectivity=4");
-wait( 1000 );
+wait(waitime);
 
 // Select catchment basins image type
 selectWindow("Morphological Segmentation");
 call("inra.ijpb.plugins.MorphologicalSegmentation.setDisplayFormat", "Catchment basins");
-wait( 1000 );
+wait(waitime);
 
 // Generate segmentation results
 selectWindow("Morphological Segmentation");
