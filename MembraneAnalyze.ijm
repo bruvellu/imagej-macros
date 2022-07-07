@@ -15,6 +15,9 @@ tablename = replace(basename, "watershed", "morphometry");
 // Get stack dimensions
 Stack.getDimensions(width, height, channels, slices, frames);
 
+// Activate batch mode
+setBatchMode(true);
+
 // Loop over slices
 for (i=1; i<=frames; i++) {
 
@@ -77,3 +80,6 @@ save(path + mapname);
 close(mapname);
 
 // Labelmap and morphometry are ready for downstream analyses and visualization
+
+// Disable batch mode
+setBatchMode(false);

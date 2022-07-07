@@ -8,7 +8,7 @@ title = getTitle();
 basename = File.getNameWithoutExtension(title);
 
 // Waiting time needed for MorphoLibJ macro to work
-waitime = 1000;
+waitime = 5000;
 
 // Begin MorphoLibJ default segmentation
 // Note: Waits are needed for the macro to work!

@@ -20,16 +20,13 @@ waitime = 5000;
 // Get stack dimensions
 Stack.getDimensions(width, height, channels, slices, frames);
 
-// Hotfix: Swap slices by frames if needed
+// Swap slices by frames if needed
 // TODO: Handle this better
 if (frames == 1 && slices > 1) {
 	run("Properties...", "slices=" + frames + " frames=" + slices);
 	frames = slices;
 	slices = 1;
 }
-
-// Create new stack for watershed
-//newImage(watername, "32-bit color-mode", width, height, channels, slices, frames);
 
 // Loop over slices
 for (i=1; i<=frames; i++) {
@@ -47,6 +44,9 @@ for (i=1; i<=frames; i++) {
 	run("Morphological Segmentation");
 	wait(waitime);
 	
+	// Activate batch mode
+	setBatchMode(true);
+
 	// Run membrane segmentation using default parameters
 	selectWindow("Morphological Segmentation");
 	call("inra.ijpb.plugins.MorphologicalSegmentation.segment", "tolerance=" + tolerance, "calculateDams=true", "connectivity=4");
@@ -66,6 +66,9 @@ for (i=1; i<=frames; i++) {
 	close("Morphological Segmentation");
 	// Close mysterious hidden stack
 	close(basename + "-1.tif");
+	
+	// Disable batch mode
+	setBatchMode(false);
 }
 
 // Close main stack
@@ -84,3 +87,5 @@ save(path + watername);
 close(watername);
 
 // Watershed is ready for editing or for downstream analyses
+
+
