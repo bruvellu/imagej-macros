@@ -3,12 +3,21 @@
 My collection of macros for image processing in
 [Fiji](https://fiji.sc/)/[ImageJ](https://imagej.github.io/).
 
-- [SyncAndCombineStacks.ijm](SyncAndCombineStacks.ijm): Synchronize and combine
-  two image stacks. Useful for pairing timelapse movies.
-- [EnhanceContrastForAllChannels.ijm](EnhanceContrastForAllChannels.ijm):
-  Quickly enhance the contrast of every channel in a stack. 
+## Processing
+
+- [ResaveStacks.ijm](ResaveStacks.ijm): Re-saves (overwrites) stacks in
+  a directory; useful for fixing calibration or adjusting contrast in batch.
 - [SplitTimepoints.ijm](SplitTimepoints.ijm): Save individual timepoints of
   a large timelapse dataset to directory.
+- [SyncAndCombineStacks.ijm](SyncAndCombineStacks.ijm): Synchronize and combine
+  two image stacks; useful for pairing timelapse movies.
+- [MirrorFlyEmbryosTest.ijm](MirrorFlyEmbryosTest.ijm): Test parameters to
+  achieve perfect roundness when mirroring a fly embryo stack.
+- [MirrorFlyEmbryosBatch.ijm](MirrorFlyEmbryosBatch.ijm): Mirror fly embryo
+  stacks in batch.
+
+## Analyses
+
 - [QuickMembraneSegmentation.ijm](QuickMembraneSegmentation.ijm): Segment and
   label cells in a single image using
   [MorphoLibJ](https://github.com/ijpb/MorphoLibJ).
@@ -18,9 +27,11 @@ My collection of macros for image processing in
   outputting label maps for downstream visualization.
 - [MembraneVisualize.ijm](MembraneVisualize.ijm): Visualize cell morphometry
   variables in stack by color-coding measurements.
-- [MirrorFlyEmbryosTest.ijm](MirrorFlyEmbryosTest.ijm): Test parameters to
-  achieve perfect roundness when mirroring a fly embryo stack.
-- [MirrorFlyEmbryosBatch.ijm](MirrorFlyEmbryosBatch.ijm): Mirror fly embryo
-  stacks in batch.
 - [IterativePIV.ijm](IterativePIV.ijm): Analyze particle image velocimetry in
   image stacks.
+
+## Utilities
+
+- [EnhanceContrastForAllChannels.ijm](EnhanceContrastForAllChannels.ijm):
+  Quickly enhance the contrast of every channel in a stack. 
+
