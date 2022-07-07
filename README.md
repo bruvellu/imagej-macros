@@ -5,7 +5,7 @@ My collection of macros for image processing in
 
 ## Processing
 
-- [ResaveStacks.ijm](ResaveStacks.ijm): Re-saves (overwrites) stacks in
+- [ResaveStacks.ijm](ResaveStacks.ijm): Re-save (overwrite) stacks in
   a directory; useful for fixing calibration or contrast in batch.
 - [SplitTimepoints.ijm](SplitTimepoints.ijm): Save individual timepoints of
   a large timelapse dataset to directory.
