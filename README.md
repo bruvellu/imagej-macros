@@ -15,7 +15,7 @@ My collection of macros for image processing in
 - [MembraneSegmentation.ijm](MembraneSegmentation.ijm): Segment cells in image
   stack and generate watershed for downstream analyses.
 - [MembraneAnalyze.ijm](MembraneAnalyze.ijm): Analyze cell morphometry in image
-  stack and generate label maps for downstream visualization.
+  stack outputting label maps for downstream visualization.
 - [MembraneVisualize.ijm](MembraneVisualize.ijm): Visualize cell morphometry
   variables in image stack by color-coding measurements.
 - [MirrorFlyEmbryosTest.ijm](MirrorFlyEmbryosTest.ijm): Test parameters to
