@@ -4,7 +4,7 @@ My collection of macros for image processing in
 [Fiji](https://fiji.sc/)/[ImageJ](https://imagej.github.io/).
 
 - [SyncAndCombineStacks.ijm](SyncAndCombineStacks.ijm): Synchronize and combine
-  two image stacks. Useful for pairing time-lapse movies.
+  two image stacks. Useful for pairing timelapse movies.
 - [EnhanceContrastForAllChannels.ijm](EnhanceContrastForAllChannels.ijm):
   Quickly enhance the contrast of every channel in a stack. 
 - [SplitTimepoints.ijm](SplitTimepoints.ijm): Save individual timepoints of
@@ -13,9 +13,9 @@ My collection of macros for image processing in
   label cells in a single image using
   [MorphoLibJ](https://github.com/ijpb/MorphoLibJ).
 - [MembraneSegmentation.ijm](MembraneSegmentation.ijm): Segment cells in image
-  stack and generate watershed lines for downstream analyses.
+  stack and generate watershed for downstream analyses.
 - [MembraneAnalyze.ijm](MembraneAnalyze.ijm): Analyze cell morphometry in image
-  stack and generate label maps.
+  stack and generate label maps for downstream visualization.
 - [MembraneVisualize.ijm](MembraneVisualize.ijm): Visualize cell morphometry
   variables in image stack by color-coding measurements.
 - [MirrorFlyEmbryosTest.ijm](MirrorFlyEmbryosTest.ijm): Test parameters to
