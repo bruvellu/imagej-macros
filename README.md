@@ -11,6 +11,8 @@ My collection of macros for image processing in
   a large timelapse dataset to directory.
 - [SyncAndCombineStacks.ijm](SyncAndCombineStacks.ijm): Synchronize and combine
   two image stacks; useful for pairing timelapse movies.
+- [CropSliceFromStack.ijm](CropSliceFromStack.ijm): Extract and crop a single
+  slice from stack saving the coordinates.
 - [MirrorFlyEmbryosTest.ijm](MirrorFlyEmbryosTest.ijm): Test parameters to
   achieve perfect roundness when mirroring a fly embryo stack.
 - [MirrorFlyEmbryosBatch.ijm](MirrorFlyEmbryosBatch.ijm): Mirror fly embryo
