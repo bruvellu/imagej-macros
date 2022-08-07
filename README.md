@@ -6,17 +6,17 @@ My collection of macros for image processing in
 ## Processing
 
 - [ResaveStacks.ijm](ResaveStacks.ijm): Re-save (overwrite) stacks in
-  a directory; useful for fixing calibration or contrast in batch.
+  a directory for fixing the calibration or contrast in batch.
 - [SplitTimepoints.ijm](SplitTimepoints.ijm): Save individual timepoints of
   a large timelapse dataset to directory.
 - [SyncAndCombineStacks.ijm](SyncAndCombineStacks.ijm): Synchronize and combine
-  two image stacks; useful for pairing timelapse movies.
+  two image stacks for pairing timelapse movies.
 - [CropSliceFromStack.ijm](CropSliceFromStack.ijm): Extract and crop a single
-  slice from stack saving the coordinates.
-- [MirrorFlyEmbryosTest.ijm](MirrorFlyEmbryosTest.ijm): Test parameters to
-  achieve perfect roundness when mirroring a fly embryo stack.
-- [MirrorFlyEmbryosBatch.ijm](MirrorFlyEmbryosBatch.ijm): Mirror fly embryo
-  stacks in batch.
+  slice from a stack saving the coordinates.
+- [MirrorFlyEmbryosTest.ijm](MirrorFlyEmbryosTest.ijm): Test parameters for
+  perfect roundness before mirroring fly embryo stacks.
+- [MirrorFlyEmbryosBatch.ijm](MirrorFlyEmbryosBatch.ijm): Mirror stacks of fly
+  embryos in batch.
 
 ## Analyses
 
@@ -36,4 +36,5 @@ My collection of macros for image processing in
 
 - [EnhanceContrastForAllChannels.ijm](EnhanceContrastForAllChannels.ijm):
   Quickly enhance the contrast of every channel in a stack. 
-
+- [SaveAllChannelCombinations.ijm](SaveAllChannelCombinations.ijm): Export all
+  possible channel combinations to PNGs. 
