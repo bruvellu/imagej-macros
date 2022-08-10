@@ -29,7 +29,7 @@ run("Split Channels");
 
 // Create and save every channel combination
 for (i=1; i<=channels; i++) {
-	print(i);
+	//print(i);
 	
 	// Save single channels using the gray LUT
 	selectWindow(basename);
@@ -42,27 +42,28 @@ for (i=1; i<=channels; i++) {
 	close(grayed);
 	
 	for (j=i+1; j<=channels; j++) {
-		print(i, j);
-			// Merge two channels keeping original files
-			run("Merge Channels...", "c1=C"+i+"-split c2=C"+j+"-split create keep");
-			// Define name for combined stack
-			combined = basename+"_C"+toString(i)+toString(j);
-			rename(combined);
-			// Convert to RGB for general use
-			run("RGB Color");
-			// Save as PNG
-			saveAs("png", path + combined + ".png");
-			// Close combined TIF
-			print(combined);
-			close(combined);
+		//print(i, j);
+		
+		// Merge two channels keeping original files
+		run("Merge Channels...", "c1=C"+i+"-split c2=C"+j+"-split create keep");
+		// Define name for combined stack
+		combined = basename+"_C"+toString(i)+toString(j);
+		rename(combined);
+		// Convert to RGB for general use
+		run("RGB Color");
+		// Save as PNG
+		saveAs("png", path + combined + ".png");
+		// Close combined TIF
+		print(combined);
+		close(combined);
 
 		for (k=i+2; k<=channels; k++) {
-			print(i, j, k);
+			//print(i, j, k);
 			
+			// Skip to avoid repeated combinations
 			if (k<=j) {
 				continue;
 			}
-
 
 			// Merge three channels keeping original files
 			run("Merge Channels...", "c1=C"+i+"-split c2=C"+j+"-split c3=C"+k+"-split create keep");
@@ -76,7 +77,6 @@ for (i=1; i<=channels; i++) {
 			// Close combined TIF
 			print(combined);
 			close(combined);
-			
 
 		}
 	}
