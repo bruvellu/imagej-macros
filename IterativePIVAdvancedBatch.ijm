@@ -10,8 +10,8 @@ slices = nSlices;
 
 // Select values for iterative PIV
 Dialog.create("Multi-slice PIV");
-Dialog.addNumber("Interrogation window 1", 200);
-Dialog.addNumber("search window 1", 400);
+Dialog.addNumber("Interrogation window 1", 150);
+Dialog.addNumber("search window 1", 300);
 Dialog.addNumber("vector spacing 1", 100);
 Dialog.addNumber("Interrogation window 2", 100);
 Dialog.addNumber("search window 2", 200);
@@ -45,11 +45,10 @@ for (slice = 1; slice < slices; slice++) {
     selectImage(imgID);
     
     // Define zero-padding depending on number of slices
-    pad = floor(log(slices) / log(10)) + 1;
-    spad = IJ.pad(slice, pad);
+    pad = IJ.pad(slice, 3);
     
     // Duplicate stack with a pair of slices to be analyzed
-    run("Duplicate...", "title=[seq_" + spad + "] duplicate range=" + slice + "-" + (slice + 1));
+    run("Duplicate...", "title=[seq_" + pad + "] duplicate range=" + slice + "-" + (slice + 1));
     
     // Run iterative PIV (Advanced) on this two-slice stack
     run("iterative PIV(Advanced)...", "  piv1=" + piv1 + " sw1=" + sw1 + " vs1=" + vs1 + 
