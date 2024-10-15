@@ -1,7 +1,6 @@
 # :microscope: ImageJ Macros
 
-My collection of macros for image processing in
-[Fiji](https://fiji.sc/)/[ImageJ](https://imagej.github.io/).
+My collection of macros for image processing in [Fiji](https://fiji.sc/)/[ImageJ](https://imagej.github.io/).
 
 ## Processing
 
@@ -19,7 +18,9 @@ My collection of macros for image processing in
 - [MembraneSegmentation.ijm](MembraneSegmentation.ijm): Segment cells in stack and generate watershed for downstream analyses.
 - [MembraneAnalyze.ijm](MembraneAnalyze.ijm): Analyze cell morphometry in stack outputting label maps for downstream visualization.
 - [MembraneVisualize.ijm](MembraneVisualize.ijm): Visualize cell morphometry variables in stack by color-coding measurements.
-- [IterativePIVAdvancedBatch.ijm](IterativePIVAdvancedBatch.ijm): Analyze particle image velocimetry in image stacks.
+- [IterativePIVAdvancedBatch.ijm](IterativePIVAdvancedBatch.ijm): Analyze particle image velocimetry in image stack.
+- [IterativePIVPlot.ijm](IterativePIVPlot.ijm): Plot vectors for PIV analysis of image stack.
+- [IterativePIVOverlay.ijm](IterativePIVOverlay.ijm): Overlay PIV vectors on image stack.
 
 ## Utilities
 

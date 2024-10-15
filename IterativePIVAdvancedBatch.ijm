@@ -4,6 +4,10 @@
 // Essentially a copy of their multislicePIV macro: https://raw.githubusercontent.com/qztseng/imagej_plugins/master/macro_scripts/multislice%20PIV.txt
 // Check tutorial to adjust parameters properly: https://sites.google.com/site/qingzongtseng/piv/tuto
 
+// 1. IterativePIVAdvancedBatch.ijm
+// 2. IterativePIVPlot.ijm
+// 3. IterativePIVOverlay.ijm
+
 // Get stack ID and number of slices
 imgID = getImageID();
 slices = nSlices;
